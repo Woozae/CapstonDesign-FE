@@ -1,10 +1,11 @@
 /* LoginPage.css */
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-  }
+#login-page {
+  background-color: #fff;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
   
   .login-container {
     display: flex;

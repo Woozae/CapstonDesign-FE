@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./LoginPage.css";
 
 const LoginPage = () => {
+  useEffect(() => {
+    // login-page ID 추가
+    document.body.id = "login-page";
+
+    return () => {
+      // Cleanup: 페이지를 떠날 때 ID 제거
+      document.body.id = "";
+    };
+  }, []);
+
   return (
     <>
-
-      {/* 로그인 박스 */}
       <div className="login-container">
         <header className="login-header">
           <h1>Spot-Right</h1>
@@ -33,7 +41,7 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="login-bottom">
-        <a href="#" className="bottom-icon"> {/* bottom-icon 클릭 가능하게 변경 */}
+        <a href="#" className="bottom-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -55,4 +63,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage; 
+export default LoginPage;
