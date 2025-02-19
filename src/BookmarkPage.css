@@ -13,7 +13,12 @@
     color: #fff;
     padding: 10px 15px; /* 텍스트 주변 여백 추가 */
   }
-  
+    /* 카드 헤더: 제목과 아이콘 같은 줄에 배치 */
+  .bookmark-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .category-filter {
     display: flex;
     gap: 10px; /* 버튼 간 간격 */
@@ -76,6 +81,14 @@
     border-radius: 4px;
     margin-bottom: 10px;
   }
+
+  .bookmark-semi-header {
+    display: flex;
+    justify-content: space-between; /* 제목과 아이콘을 좌우 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    width: 100%; /* 너비 100%로 설정하여 내부 요소들이 정렬됨 */
+    height: 28px;
+  }
   
   /* 카드 제목 스타일 */
   .bookmark-card-title {
@@ -85,33 +98,30 @@
     margin: 0;
   }
 
-  /* 카드 헤더: 제목과 아이콘 같은 줄에 배치 */
-.bookmark-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
+  /* 아이콘 스타일 */
+  .bookmarkpage-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* 수직 정렬 */
+    justify-content: center; /* 내부 아이콘 가운데 정렬 */
+    margin-left: auto; /* 아이콘을 오른쪽 끝으로 밀어줌 */
+  }
+    
+    /* 카테고리 컨테이너 */
+  .bookmark-categories {
+    padding-left: 10px;
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
 
-/* 아이콘 스타일 */
-.bookmark-icon {
-  cursor: pointer;
-}
-  
-  /* 카테고리 컨테이너 */
-.bookmark-categories {
-  padding-left: 10px;
-  margin-top: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-/* 각 카테고리 스타일 */
-.bookmark-category {
-  padding: 5px 10px;
-  background-color: #2e2e2e;
-  color: #fff;
-  font-size: 12px;
-  border-radius: 4px;
-}
+  /* 각 카테고리 스타일 */
+  .bookmark-category {
+    padding: 5px 10px;
+    background-color: #2e2e2e;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+  }

@@ -65,16 +65,16 @@ const BookmarkPage = () => {
               return (
                 <div className="bookmark-card" key={index}>
                   <div className="bookmark-thumbnail"></div>
-                  <div className="bookmark-header">
+                  <div className="bookmark-semi-header">
                     <h4 className="bookmark-card-title">Title</h4>
                     <div
-                      className="bookmark-icon"
+                      className="bookmarkpage-icon"
                       onClick={() => handleBookmarkClick(index)} // 클릭된 카드의 인덱스를 전달
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
+                        width="26"
+                        height="26"
                         viewBox="0 0 62 62"
                         fill={bookmarkedStates[index] ? "#000000" : "none"} // 개별 카드 상태에 따라 색상 변경
                         stroke="#1E1E1E"

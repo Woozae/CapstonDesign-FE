@@ -6,8 +6,8 @@
     padding: 10px 20px;
     background-color: #2e2e2e; /* Figma 색상 코드 */
     color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 13px;
+    padding-bottom: 13px;
  
 }
 
@@ -77,3 +77,29 @@
     flex-shrink: 0;
 }
 
+/* 스크롤 버튼 */
+.scroll-to-top {
+    position: fixed;
+    bottom: 49px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: solid 3px #2e2e2e;
+    font-size: 24px;
+    color: #2e2e2e;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+  }
+  
+  .scroll-to-top:hover {
+    background: #fef399;
+  }
+  
+  /* SVG 아이콘 위치 조정 */
+  .scroll-to-top svg {
+    padding-top: 1px;
+    
+  }

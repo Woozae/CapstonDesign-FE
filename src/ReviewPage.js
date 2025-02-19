@@ -17,6 +17,7 @@ function ReviewPage() {
   const handleCopyrightClick = () => {
     setIsCopyrighted(!isCopyrighted);
   };
+  
   const handleWriteClick = () => {
     setIsWrited(!isWrited);
   };
