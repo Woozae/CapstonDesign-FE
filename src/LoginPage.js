@@ -7,11 +7,13 @@ const LoginPage = () => {
       {/* 상단 헤더 */}
       <header className="header">
         <div className="header-content">
-          <h1 className="header-title">Spot-Right</h1>
+          <h1 className="header-title">Spot-Right Test</h1>
           <div className="header-buttons">
             <button className="header-button-bookmark">Bookmark</button>
             <button className="header-button-album">Album</button>
-            <a href="#" className="header-icon"> {/* header-icon 클릭 가능하게 변경 */}
+            <a href="#" className="header-icon">
+              {" "}
+              {/* header-icon 클릭 가능하게 변경 */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -38,18 +40,28 @@ const LoginPage = () => {
           <form>
             <div className="form-group">
               <label htmlFor="username">아이디</label>
-              <input type="text" id="username" placeholder="아이디를 입력하세요" />
+              <input
+                type="text"
+                id="username"
+                placeholder="아이디를 입력하세요"
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">비밀번호</label>
-              <input type="password" id="password" placeholder="비밀번호를 입력하세요" />
+              <input
+                type="password"
+                id="password"
+                placeholder="비밀번호를 입력하세요"
+              />
             </div>
             <div className="form-options">
               <label>
                 <input type="checkbox" /> 로그인 상태 유지
               </label>
             </div>
-            <button type="submit" className="login-button">로그인</button>
+            <button type="submit" className="login-button">
+              로그인
+            </button>
             <div className="signup-link">
               <a href="/signup">회원가입</a>
             </div>
@@ -57,7 +69,9 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="login-bottom">
-        <a href="#" className="bottom-icon"> {/* bottom-icon 클릭 가능하게 변경 */}
+        <a href="#" className="bottom-icon">
+          {" "}
+          {/* bottom-icon 클릭 가능하게 변경 */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -79,4 +93,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage; 
+export default LoginPage;
