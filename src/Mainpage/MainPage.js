@@ -40,9 +40,29 @@ const Mainpage = () => {
   const [filteredLocations, setFilteredLocations] = useState(locations); // 필터된 리스트 상태
   const [selectedCategory, setSelectedCategory] = useState(""); // 추가된 상태
   
+  //명소 상세 정보 페이지로 이동
+  const handleTitleClick = (title) => {
+    const detailUrl = `/Detail?title=${encodeURIComponent(title)}`;
   
-
-
+    // 현재 사용자의 화면 크기 가져오기
+    const screenWidth = window.screen.width;
+    const screenHeight = window.screen.height;
+  
+    // 새 창의 크기 설정
+    const windowWidth = 800;  // 새 창의 너비
+    const windowHeight = 1000; // 새 창의 높이
+  
+    // 새 창의 위치 설정 (화면 오른쪽 끝에 배치)
+    const leftPosition = screenWidth - windowWidth;  // 오른쪽 끝 위치
+    const topPosition = (screenHeight - windowHeight) / 2; // 세로 중앙 정렬
+  
+    // 새 창 열기
+    window.open(
+      detailUrl,
+      "_blank",
+      `width=${windowWidth},height=${windowHeight},left=${leftPosition},top=${topPosition},resizable=no,scrollbars=yes`
+    );
+  };
   const handleBookmarkClick = (index) => {
     const updatedStates = [...bookmarkedStates];
     updatedStates[index] = !bookmarkedStates[index];
@@ -267,7 +287,15 @@ const Mainpage = () => {
               </div>
               <div className="detail-sub">
                 <div className="detail-title">
-                  <h3>{selectedItem.title}</h3>
+                <h3 
+                  onClick={() => handleTitleClick(selectedItem.title)} 
+                  style={{ cursor: "pointer", color: "#2e2e2e", textDecoration: "none" }}
+                  onMouseEnter={(e) => e.target.style.textDecoration = "underline"}
+                  onMouseLeave={(e) => e.target.style.textDecoration = "none"}
+                >
+                  {selectedItem.title}
+                </h3>
+
                   {/* 리뷰 아이콘 클릭 시 리뷰페이지로 이동 */}
                   <svg className="review-icon" onClick={() => navigate("/Review")} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none">
                     <path d="M4 20H20M12.67 5.53996L14.49 3.71996C15.1576 3.05227 16.0942 2.68774 17.07 2.71996C17.5941 2.72012 18.1047 2.9172 18.5 3.27996C18.8995 3.64479 19.1449 4.13617 19.19 4.65996C19.2351 5.18375 19.0772 5.70484 18.74 6.12996L16.92 7.94996M12.67 5.53996L5.5 12.71V16.5H9.29L16.46 9.32996L12.67 5.53996Z" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
