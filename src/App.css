@@ -1,1 +1,105 @@
-.App { text-align: center; }
+/* 헤더 스타일 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2e2e2e; /* Figma 색상 코드 */
+    color: white;
+    padding-top: 13px;
+    padding-bottom: 13px;
+ 
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: lighter;
+    margin: 0;
+    cursor: pointer;
+}
+
+
+.header-buttons {
+    display: flex;
+    gap: 23px; /* 두 버튼 간의 간격 설정 */
+    align-items: center;
+}
+
+.header-button-bookmark:hover,
+.header-button-album:hover {
+    background-color: #E0E0E0; /* hover 시 배경색 변경 */
+    cursor: pointer; /* hover 시 포인터 커서 */
+}
+
+.header-button-bookmark {
+    display: flex;
+    width: 95px;
+    height: 30px;
+    padding: var(--sds-size-space-300);
+    justify-content: center;
+    align-items: center;
+    gap: var(--sds-size-space-200);
+    flex-shrink: 0;
+    border-radius: var(--sds-size-radius-200);
+    border: var(--sds-size-stroke-border) solid var(--sds-color-border-brand-default);
+    background: var(--Grays-White, #FFF);
+    border-radius: 10px;
+}
+
+.header-button-album {
+    display: inline-flex;
+    width: 75px;
+    height: 30px;
+    padding: var(--sds-size-space-300);
+    justify-content: center;
+    align-items: center;
+    gap: var(--sds-size-space-200);
+    flex-shrink: 0;
+    border-radius: var(--sds-size-radius-200);
+    border: var(--sds-size-stroke-border) solid var(--sds-color-border-brand-default);
+    background: var(--Grays-White, #FFF);
+    border-radius: 10px;
+}
+
+.header-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 수직 중앙 정렬 */
+    width: 45px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+/* 스크롤 버튼 */
+.scroll-to-top {
+    position: fixed;
+    bottom: 49px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: solid 3px #2e2e2e;
+    font-size: 24px;
+    color: #2e2e2e;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+  }
+  
+  .scroll-to-top:hover {
+    background: #fef399;
+  }
+  
+  /* SVG 아이콘 위치 조정 */
+  .scroll-to-top svg {
+    padding-top: 1px;
+    
+  }
