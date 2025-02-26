@@ -172,8 +172,18 @@ const Mainpage = () => {
         });
 
         window.map = mapInstance; // 전역 변수에 저장
+        setMap(mapInstance);  
 
-      }
+        naver.maps.Event.addListener(mapInstance, "zoom_changed", () => {
+          const newZoomLevel = mapInstance.getZoom();
+          setLevel((prevLevel) => {
+            if (prevLevel !== newZoomLevel) {
+              return newZoomLevel;
+            }
+            return prevLevel;
+          });
+        });
+        }
     });
   }, []);
 
