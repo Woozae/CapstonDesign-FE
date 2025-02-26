@@ -1,0 +1,449 @@
+
+.main-container {
+  display: flex;
+  height: 100vh;
+  background-color: #fff;
+  color: black;
+  padding: 15px 30px 30px 30px; /* 위쪽만 10px, 나머지는 30px */
+  gap: 20px;
+}
+
+/* 왼쪽 컨테이너 (지도 + 검색창 + 필터) */
+.left-container {
+  position: relative;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+  height: 100%;
+}
+
+/* 검색창 및 필터 */
+.top-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 검색창을 감싸는 컨테이너 */
+.search-container {
+  position: relative;
+  width: 100%; 
+  max-width: 100%; 
+  display: flex;
+  align-items: center;
+}
+
+/* 검색 input */
+.search-input {
+  width: 100%; /* 부모 요소(search-container) 안에서만 차지 */
+  padding: 10px 40px 10px 15px; /* 오른쪽에 아이콘 여백 확보 */
+  font-size: 14px;
+  border: 1px solid #2e2e2e;
+  border-radius: 15px;
+  outline: none;
+}
+
+/* 돋보기 아이콘 (오른쪽 정렬) */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px; 
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* 필터 버튼 컨테이너 */
+.filters {
+  display: flex;       /* 수평 정렬을 위한 Flexbox */
+  flex-direction: row; /* 기본값이므로 명확하게 설정 */
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 10px; /* 버튼 사이 간격 */
+  margin-top: 3px;
+  padding-left: 10px;
+}
+
+/* 필터 버튼 스타일 */
+.filter-btn {
+  background-color: #2e2e2e;
+  padding: 5px 9px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 12px;
+  box-sizing: border-box;
+  border: solid 1px transparent; /* 기본 상태에서도 border 유지 */
+}
+
+/* 필터 버튼 클릭 시 활성화 스타일 */
+.filter-btn.active {
+  background-color: #fef399; /* 활성화된 버튼은 조금 밝은 색 */
+  color: #2e2e2e; /* 활성화 상태 텍스트 색상 */
+  border: solid 1px #2e2e2e; /* 활성화 상태 테두리 색상 */
+  box-sizing: border-box;
+}
+
+/* 지도 */
+.map-container {
+  flex-grow: 1;
+  width: 100%;
+  height: 500px;
+  background-color: #2e2e2e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-placeholder {
+  width: 90%;
+  height: 90%;
+  background-color: #fef399;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+
+/* 오른쪽 리스트 */
+.list-container {
+  width: 30%;
+  background-color: #2e2e2e;
+  padding: 15px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.semi-container {
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* 리스트 아이템 */
+.list-item {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #2e2e2e;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.list-item:hover {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 리스트 컨텐츠 */
+.list-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.list-info {
+  flex-direction: column;
+  align-items: flex-start;
+  width:50%;
+  align-self: flex-start;
+  padding-top: 8px;
+}
+
+/* 북마크 아이콘 */
+.bookmark-icon {
+  position: absolute;
+  top: 5px;
+  right: 1px;
+  cursor: pointer;
+}
+
+/* 썸네일 */
+.list-thumbnail {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+/* 리스트 하단 */
+.list-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.heart-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  width: 30%;
+  padding-left: 6px;
+}
+
+.heart-icon{
+  cursor: pointer;
+}
+
+.heart {
+  font-size: 16px;
+  color: #2e2e2e;
+  font-weight: bolder;
+  padding-bottom: 5px;
+}
+
+.category-tag {
+  background-color: #2e2e2e;
+  padding: 7px 9px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: white;
+}
+
+
+/* 리스트 클릭 했을 때 */
+
+
+/* 상세 정보가 지도 위에 뜨도록 설정 */
+.detail-container {
+  position: absolute;
+  bottom: 0; /* 지도 아래부분과 맞추기 */
+  right: 0;
+  width: 100%; /* 지도 영역과 동일한 너비 */
+  background-color: #fff;
+  border: 2px solid #2e2e2e; /* 상단 경계선 추가 */
+  padding: 20px;
+  z-index: 9999; /* 지도보다 위에 배치 */
+  box-sizing: border-box;
+}
+
+
+/* 상세 정보 헤더 */
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 상세 썸네일 */
+.detail-thumbnails {
+  display: flex;
+  width: 40%;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 150px;
+  height: 150px;
+  background-color: gray;
+}
+
+.detail-sub{
+  padding-left: 5px;
+  width: 60%;
+  height: 135px;
+  padding-top: 20px;
+  gap:5px;
+}
+
+.detail-title{
+  padding-left: 9px;
+  display: flex;
+  justify-content: space-between;
+  width: 91%;
+}
+
+
+/* 상세 설명 */
+.detail-info {
+  height: 50px;
+  margin-top: 10.25px;
+  margin-bottom: 10px;
+  border: 1px solid #2e2e2e;
+  color:#4b4b4b;
+  padding: 5px;
+  width:90%;
+  height: 66%;
+}
+
+.review-icon{
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.close-icon{
+  cursor: pointer;
+  position: absolute; /* 부모 요소 기준 위치 지정 */
+  top: 5px; /* 기존보다 살짝 위로 */
+  right: 5px; /* 오른쪽으로 이동 */
+  width: 24px; /* 아이콘 크기 */
+  height: 24px;
+}
+
+.detail-content{
+  display:flex;
+  margin-top: 15px;
+}
+
+.detail-left{
+  width: 40%;
+  display: flex;
+  flex-direction: column; /* 요소들을 수직으로 정렬 */
+  align-items:flex-start;
+  gap: 5px; /* 각 요소 간격 */
+}
+
+.detail-right{
+  margin-left: 3px;
+  margin-top: 5px;
+  width: 53.5%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 18px;
+  font-weight:bolder;
+}
+
+
+.category-tag{
+  margin-left: 5px;
+
+}
+
+.heart-container{
+  margin-top: 5px;
+  cursor: pointer;
+  align-items: center;
+
+}
+.heart{
+  padding-left: 4px;
+  padding-top: 4px;
+}
+
+.bookmark-container {
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 수직 중앙 정렬 */
+  gap: 5px; /* 아이콘과 텍스트 사이 간격 */
+  margin-top: 5px;
+  margin-left: 3.5px;
+  cursor: pointer;
+}
+.bookmark{
+  padding-top:1px;
+}
+
+/* 메인 컨테이너 하단 경계선 */
+.bottom-border {
+width: 100%;
+height: 3px;
+background-color: #2e2e2e;
+margin-top: 0px;
+}
+
+/* 하단 컨테이너 (선택된 리스트 아이템이 있을 때 보임) */
+.bottom-container {
+width: 100%;
+background-color: white;
+padding: 20px 30px;
+box-sizing: border-box;
+}
+
+.bottom-title {
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 20px;
+padding-top: 15px;
+padding-left: 10px;
+
+}
+
+/* 갤러리 스타일 */
+.bottom-gallery {
+display: flex;
+gap: 20px;
+justify-content: center;
+}
+
+.similar-gallery{
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 20px;
+}
+
+/* 카드 스타일 */
+.similar-card {
+background: white;
+border: 1px solid #2e2e2e;
+border-radius: 8px;
+padding: 10px;
+text-align: left;
+transition: box-shadow 0.3s ease;
+}
+
+
+/* 썸네일 스타일 */
+.similar-thumbnail {
+width: 100%;
+padding-bottom: 100%; /* 정사각형 */
+background-color: #e0e0e0;
+border-radius: 4px;
+margin-bottom: 10px;
+}
+
+.similar-semi-header {
+display: flex;
+justify-content: space-between; /* 제목과 아이콘을 좌우 정렬 */
+align-items: center; /* 수직 중앙 정렬 */
+width: 100%; /* 너비 100%로 설정하여 내부 요소들이 정렬됨 */
+height: 28px;
+}
+
+/* 카드 제목 스타일 */
+.similar-card-title {
+padding-left: 10px;
+color: #000;
+font-size: 16px;
+margin: 0;
+}
+
+/* 아이콘 스타일 */
+.similarpage-icon {
+cursor: pointer;
+display: flex;
+align-items: center; /* 수직 정렬 */
+justify-content: center; /* 내부 아이콘 가운데 정렬 */
+margin-left: auto; /* 아이콘을 오른쪽 끝으로 밀어줌 */
+}
+
+/* 카테고리 컨테이너 */
+.similar-categories {
+padding-left: 10px;
+margin-top: 5px;
+display: flex;
+flex-wrap: wrap;
+gap: 5px;
+}
+
+/* 각 카테고리 스타일 */
+.similar-category {
+padding: 5px 10px;
+background-color: #2e2e2e;
+color: #fff;
+font-size: 12px;
+border-radius: 4px;
+}

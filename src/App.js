@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
-import AlbumPage from "./AlbumPage";
-import LoginPage from "./LoginPage";
-import BookmarkPage from "./BookmarkPage"; 
-import ReviewPage from "./ReviewPage";
-import MainPage from "./MainPage";
+import AlbumPage from "./Albumpage/AlbumPage";
+import LoginPage from "./Loginpage/LoginPage";
+import BookmarkPage from "./Bookmarkpage/BookmarkPage"; 
+import ReviewPage from "./Reviewpage/ReviewPage";
+import MainPage from "./Mainpage/MainPage";
+import SignupPage from "./Signuppage/SignupPage";
 import "./App.css";
 
 const ScrollToTopButton = () => {
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Album" element={<AlbumPage />} />
         <Route path="/Review" element={<ReviewPage />} />
+        <Route path="/Signup" element={<SignupPage/>} />
 
       </Routes>
       <ScrollToTopButton /> 
