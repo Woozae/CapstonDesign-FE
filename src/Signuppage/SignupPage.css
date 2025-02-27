@@ -10,6 +10,9 @@
     margin: 0 auto;
     padding: 20px;
     margin-top: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.50);
+    border-radius: 8px;
+
   }
   
   #signup-page h2 {
@@ -18,14 +21,14 @@
   
   .form-group {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   
   label {
     display: block;
     margin-bottom: 5px;
     font-size: 14px;
-    color: #555;
+    color: #2e2e2e;
   }
   
   #Signuppage input {

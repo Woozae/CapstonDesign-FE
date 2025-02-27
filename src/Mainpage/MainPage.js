@@ -305,11 +305,13 @@ const Mainpage = () => {
                 >
                   {selectedItem.title}
                 </h3>
-
-                  {/* 리뷰 아이콘 클릭 시 리뷰페이지로 이동 */}
-                  <svg className="review-icon" onClick={() => navigate("/Review")} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 20H20M12.67 5.53996L14.49 3.71996C15.1576 3.05227 16.0942 2.68774 17.07 2.71996C17.5941 2.72012 18.1047 2.9172 18.5 3.27996C18.8995 3.64479 19.1449 4.13617 19.19 4.65996C19.2351 5.18375 19.0772 5.70484 18.74 6.12996L16.92 7.94996M12.67 5.53996L5.5 12.71V16.5H9.29L16.46 9.32996L12.67 5.53996Z" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+           
+                {/* 리뷰 아이콘 클릭 시 리뷰페이지로 이동 
+                <svg className="review-icon" onClick={() => navigate("/Review")} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 20H20M12.67 5.53996L14.49 3.71996C15.1576 3.05227 16.0942 2.68774 17.07 2.71996C17.5941 2.72012 18.1047 2.9172 18.5 3.27996C18.8995 3.64479 19.1449 4.13617 19.19 4.65996C19.2351 5.18375 19.0772 5.70484 18.74 6.12996L16.92 7.94996M12.67 5.53996L5.5 12.71V16.5H9.29L16.46 9.32996L12.67 5.53996Z" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                */}
+                              
                 </div>
                 <div className="detail-info">
                   <p className="detail-desc">{selectedItem.description}</p>
@@ -361,12 +363,13 @@ const Mainpage = () => {
                 </div>
                 </div>
         
-            {/* 오른쪽: 리뷰 리스트 */}
+            {/* 오른쪽: 리뷰 리스트 
             <div className="detail-right">
               <p>review ...</p>
               <p>review ...</p>
               <p>review ...</p>
             </div>
+            */}
           </div>
         </div>
 
