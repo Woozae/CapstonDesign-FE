@@ -70,17 +70,28 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 5px;
   }
   
   .login-button:hover {
     text-decoration: underline;
   }
-  
-  .signup-link {
-    text-align: right; /* 텍스트를 오른쪽으로 정렬 */
-    margin-top: 10px;
-    color:#2C2C2C;
+
+  .sign-up-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #2e2e2e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
+  
+  .sign-up-button:hover {
+    text-decoration: underline;
+  }
+  
   
   .signup-link a {
     color: var(--sds-color-text-brand-default);

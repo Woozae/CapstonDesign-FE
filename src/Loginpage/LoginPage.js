@@ -22,21 +22,20 @@ const LoginPage = () => {
           <form>
             <div className="form-group">
               <label htmlFor="username">아이디</label>
-              <input type="text" id="username" placeholder="아이디를 입력하세요" />
+              <input type="text" id="username" placeholder="이메일을 입력하세요" />
             </div>
             <div className="form-group">
               <label htmlFor="password">비밀번호</label>
               <input type="password" id="password" placeholder="비밀번호를 입력하세요" />
             </div>
-            <div className="form-options">
-              <label>
-                <input type="checkbox" /> 로그인 상태 유지
-              </label>
-            </div>
+            
             <button type="submit" className="login-button">로그인</button>
-            <div className="signup-link">
-              <a href="/Signup">회원가입</a>
-            </div>
+            <button type="button" className="sign-up-button" 
+            onClick={() => window.location.href = "/Signup"}>
+              회원가입
+            </button>
+
+            
           </form>
         </div>
       </div>

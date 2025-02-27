@@ -253,7 +253,7 @@
 }
 
 .detail-sub{
-  padding-left: 5px;
+  padding-left: 10px;
   width: 60%;
   height: 135px;
   padding-top: 20px;
@@ -267,16 +267,6 @@
   width: 91%;
 }
 
-.clickable-title {
-  cursor: pointer;
-  color: #2e2e2e;
-  text-decoration: none; /* 기본적으로 밑줄 없음 */
-  transition: text-decoration 0.2s ease-in-out;
-}
-
-.clickable-title:hover {
-  text-decoration: underline; /* hover 시 밑줄 추가 */
-}
 
 /* 상세 설명 */
 .detail-info {
@@ -287,7 +277,7 @@
   color:#4b4b4b;
   padding: 5px;
   width:90%;
-  height: 53%;
+  height: 67%;
 }
 
 .review-icon{
