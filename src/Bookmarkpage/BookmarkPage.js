@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
+import { useAuth } from "../LoginState/AuthContext"; // 로그인 상태 가져오기
+import LoginPopup from "../LoginState/LoginPopup"; // 팝업 컴포넌트 추가
 import "./BookmarkPage.css";
 
 const BookmarkPage = () => {
+  const { isLoggedIn } = useAuth(); // 로그인 상태 확인
+  const [showLoginPopup, setShowLoginPopup] = useState(false); // 팝업 상태
+  const [popupPosition, setPopupPosition] = useState({ top: "50%", left: "50%" });
   const [bookmarkedStates, setBookmarkedStates] = useState(
     Array(8).fill(false) // 초기에는 모든 북마크 상태가 false
   );
@@ -17,17 +22,44 @@ const BookmarkPage = () => {
       return shuffled.slice(0, 3).sort((a, b) => categories.indexOf(a) - categories.indexOf(b)); // 순서대로 정렬
     });
 
-  const handleBookmarkClick = (index) => {
-    // 클릭된 카드의 상태를 토글
+
+  // 로그인 필요 팝업 표시
+  const showLoginRequiredPopup = () => {
+    // 스크롤 업 버튼 위치 기준으로 팝업 배치
+    const scrollButton = document.querySelector(".scroll-to-top");
+  
+    if (!scrollButton) return; // 버튼이 없으면 리턴
+  
+    const buttonRect = scrollButton.getBoundingClientRect();
+    
+    // 기본 위치 (스크롤 버튼 왼쪽)
+    let left = buttonRect.left - 300; // 버튼 왼쪽에서 360px 이동
+    let top = buttonRect.top - 10; // 현재 스크롤 위치 반영
+  
+    setPopupPosition({ top: `${top}px`, left: `${left}px` });
+    setShowLoginPopup(true);
+  };
+  
+  // 북마크 클릭 시 로그인 체크 후 처리
+  const handleBookmarkClick = (event, index) => {
+    event.stopPropagation();
+    if (!isLoggedIn) {
+      showLoginRequiredPopup(event);
+      return;
+    }
+
     const updatedStates = [...bookmarkedStates];
-    updatedStates[index] = !updatedStates[index];
+    updatedStates[index] = !bookmarkedStates[index];
     setBookmarkedStates(updatedStates);
   };
+
 
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
   };
 
+
+  
   return (
     <div className="bookmark-main">
       <div className="bookmark-header">
@@ -67,16 +99,17 @@ const BookmarkPage = () => {
                   <div className="bookmark-thumbnail"></div>
                   <div className="bookmark-semi-header">
                     <h4 className="bookmark-card-title">Title</h4>
-                    <div
-                      className="bookmarkpage-icon"
-                      onClick={() => handleBookmarkClick(index)} // 클릭된 카드의 인덱스를 전달
-                    >
+                      <div
+                      className="bookmark-icon"
+                      onClick={(event) => handleBookmarkClick(event, index)}
+                      >
+                    
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
+                        width="24"
+                        height="24"
                         viewBox="0 0 62 62"
-                        fill={bookmarkedStates[index] ? "#000000" : "none"} // 개별 카드 상태에 따라 색상 변경
+                        fill={bookmarkedStates[index] ? "#fef399" : "none"} // 개별 카드 상태에 따라 색상 변경
                         stroke="#1E1E1E"
                       >
                         <path
@@ -100,7 +133,11 @@ const BookmarkPage = () => {
             })}
         </div>
       </div>
-    </div>
+
+     {/* 로그인 필요 팝업 추가 */}
+     <LoginPopup show={showLoginPopup} onClose={() => setShowLoginPopup(false)} position={popupPosition} />
+      
+      </div>
   );
 };
 
