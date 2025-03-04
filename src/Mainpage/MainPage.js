@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
+import { useAuth } from "../LoginState/AuthContext"; // 로그인 상태 가져오기
+import LoginPopup from "../LoginState/LoginPopup"; // 팝업 컴포넌트 추가
 import "./MainPage.css";
 
 const Mainpage = () => {
+  const { isLoggedIn } = useAuth(); // 로그인 상태 확인
   const navigate = useNavigate();
   const [map, setMap] = useState(null); // 지도 객체 상태 추가
   const [level, setLevel] = useState(9); // 초기 줌 레벨
+  const [showLoginPopup, setShowLoginPopup] = useState(false); // 팝업 상태
+  const [popupPosition, setPopupPosition] = useState({ top: "50%", left: "50%" });
  
 
   // 인천 지역 실제 장소 리스트
@@ -63,7 +68,32 @@ const Mainpage = () => {
       `width=${windowWidth},height=${windowHeight},left=${leftPosition},top=${topPosition},resizable=no,scrollbars=yes`
     );
   };
-  const handleBookmarkClick = (index) => {
+
+  // 로그인 필요 팝업 표시
+  const showLoginRequiredPopup = () => {
+    // 스크롤 업 버튼 위치 기준으로 팝업 배치
+    const scrollButton = document.querySelector(".scroll-to-top");
+  
+    if (!scrollButton) return; // 버튼이 없으면 리턴
+  
+    const buttonRect = scrollButton.getBoundingClientRect();
+    
+    // 기본 위치 (스크롤 버튼 왼쪽)
+    let left = buttonRect.left - 300; // 버튼 왼쪽에서 360px 이동
+    let top = buttonRect.top - 10; // 현재 스크롤 위치 반영
+  
+    setPopupPosition({ top: `${top}px`, left: `${left}px` });
+    setShowLoginPopup(true);
+  };
+  
+
+
+  const handleBookmarkClick = (event, index) => {
+    event.stopPropagation(); // 부모 요소 클릭 방지
+    if (!isLoggedIn) {
+      showLoginRequiredPopup(event);
+      return;
+    }
     const updatedStates = [...bookmarkedStates];
     updatedStates[index] = !bookmarkedStates[index];
     setBookmarkedStates(updatedStates);
@@ -71,21 +101,37 @@ const Mainpage = () => {
 
   
 
-  const handleHeartClick = (index) => {
+  const handleHeartClick = (event, index) => {
+    event.stopPropagation(); // 부모 요소 클릭 방지
+    if (!isLoggedIn) {
+      showLoginRequiredPopup(event);
+      return;
+    }
     const updatedStates = [...heartStates];
     updatedStates[index] = !heartStates[index];
     setHeartStates(updatedStates);
   };
 
   // 상세 정보의 북마크 토글
-  const handleDetailBookmarkClick = () => {
+  const handleDetailBookmarkClick = (event) => {
+    event.stopPropagation(); // 부모 요소 클릭 방지
+    if (!isLoggedIn) {
+      showLoginRequiredPopup(event); // event 전달
+      return;
+    }
     setSelectedItemBookmark(!selectedItemBookmark);
   };
 
   // 상세 정보의 하트 토글
-  const handleDetailHeartClick = () => {
+  const handleDetailHeartClick = (event) => {
+    event.stopPropagation(); // 부모 요소 클릭 방지
+    if (!isLoggedIn) {
+      showLoginRequiredPopup(event); // event 전달
+      return;
+    }
     setSelectedItemHeart(!selectedItemHeart);
   };
+
 
   const handleItemClick = (index) => {
     const location = locations[index];
@@ -331,7 +377,7 @@ const Mainpage = () => {
             <div className="detail-left">
               <span className="category-tag">{selectedItem.category}</span>
         
-             <div className="heart-container" onClick={handleDetailHeartClick}>
+              <div className="heart-container" onClick={(event) => handleDetailHeartClick(event)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 30 32"
                   fill={selectedItemHeart ? "#Fe0031" : "none"} stroke="#1E1E1E">
                   <path d="M26.05 6.33745C..." />
@@ -349,9 +395,10 @@ const Mainpage = () => {
         
 
         
-              <div className="bookmark-container" onClick={handleDetailBookmarkClick}>
+              
+              <div className="bookmark-container" onClick={(event) => handleDetailBookmarkClick(event)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 34 35"
-                  fill={selectedItemBookmark ? "#000000" : "none"} stroke="#1E1E1E">
+                  fill={selectedItemBookmark ? "#fef399" : "none"} stroke="#1E1E1E">
                   <path
                       d="M26.9167 29.8284L17 22.7451L7.08334 29.8284V7.16176C7.08334 6.41032 7.38185 5.68965 7.91321 5.15829C8.44456 4.62694 9.16523 4.32843 9.91668 4.32843H24.0833C24.8348 4.32843 25.5555 4.62694 26.0868 5.15829C26.6182 5.68965 26.9167 6.41032 26.9167 7.16176V29.8284Z"
                       strokeWidth="4"
@@ -393,13 +440,13 @@ const Mainpage = () => {
                 </div>
 
                 {/* 북마크 아이콘 (오른쪽 상단) */}
-                <div className="bookmark-icon" onClick={(e) => { e.stopPropagation(); handleBookmarkClick(index); }}>
+                <div className="bookmark-icon" onClick={(event) => handleBookmarkClick(event, index)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="28"
                     height="28"
                     viewBox="0 0 34 35"
-                    fill={bookmarkedStates[index] ? "#000000" : "none"} // 검정색 토글
+                    fill={bookmarkedStates[index] ? "#fef399" : "none"} 
                     stroke="#1E1E1E"
                   >
                     <path
@@ -415,7 +462,7 @@ const Mainpage = () => {
               {/* 하단: 하트 아이콘과 카테고리 태그 */}
               <div className="list-footer">
                 {/* 하트 아이콘 및 숫자 (왼쪽) */}
-                <div className="heart-container" onClick={(e) => { e.stopPropagation(); handleHeartClick(index); }}>
+                <div className="heart-container" onClick={(event) => handleHeartClick(event, index)}>
                   <div className="heart-icon">
 
                   <svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 30 32" fill={heartStates[index] ? "#Fe0031" : "none"} // 빨간색 토글
@@ -489,6 +536,9 @@ const Mainpage = () => {
         </div>
       )}
 
+    {/* 로그인 필요 팝업 추가 */}
+    <LoginPopup show={showLoginPopup} onClose={() => setShowLoginPopup(false)} position={popupPosition} />
+      
     </div>
   );
 };

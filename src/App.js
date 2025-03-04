@@ -7,6 +7,7 @@ import ReviewPage from "./Reviewpage/ReviewPage";
 import MainPage from "./Mainpage/MainPage";
 import SignupPage from "./Signuppage/SignupPage";
 import PlaceDetailPage from "./PlaceDetailPage/PlaceDetailPage";
+import { AuthProvider } from "./LoginState/AuthContext";
 import "./App.css";
 
 /** 페이지 최상단으로 이동하는 버튼 */
@@ -76,9 +77,11 @@ const MainContent = () => {
 /** 최종 App 컴포넌트 */
 const App = () => {
   return (
-    <Router>
-      <MainContent />
-    </Router>
+    <AuthProvider> {/* 로그인 상태를 전역적으로 관리 */}
+      <Router>
+        <MainContent />
+      </Router>
+    </AuthProvider>
   );
 };
 

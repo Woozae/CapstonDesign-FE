@@ -7,6 +7,19 @@ window.onload = function () {
         if (window.map) {
             clearInterval(waitForMap);
 
+            // 지도 줌 컨트롤 활성화 (스타일 변경 포함)
+            const zoomControl = new naver.maps.ZoomControl();
+            window.map.setOptions({
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: naver.maps.MapTypeControlStyle.SMALL,
+                    position: naver.maps.Position.RIGHT_TOP // 위치 조정 (오른쪽 중앙)
+                },
+                minZoom: 7,  // 최소 줌 레벨 설정 (예: 7)
+                maxZoom: 14  // 최대 줌 레벨 설정 (예: 14)
+            });
+
+
             // 초기 줌 레벨 설정
             window.map.setZoom(10);
             updateGeoJson(window.map.getZoom());
@@ -22,6 +35,7 @@ window.onload = function () {
         }
     }, 500);
 };
+
 
 let currentJsonFile = null; // 중복 요청 방지
 let previousZoomLevel = null; // 이전 줌 레벨 저장
@@ -93,7 +107,7 @@ function updateGeoJson(zoomLevel) {
 
             })
             .catch(error => console.error(`GeoJSON 로드 실패`, error));
-    }, 200); // 폴리곤 제거 후 200ms 후에 로드하여 중첩 방지
+    }, 100); // 폴리곤 제거 후 100ms 후에 로드하여 중첩 방지
 }
 
 // 기존 폴리곤 삭제 함수

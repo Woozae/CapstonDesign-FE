@@ -37,25 +37,22 @@ const SignupPage = () => {
           errorMsg = "10~15자로 입력해주세요.";
         break;
       case "confirmPassword":
-        if (!value) errorMsg = "비밀번호 확인을 입력해주세요.";
+        if (!value) errorMsg = "비밀번호 재확인을 입력해주세요.";
         else if (value !== formData.password)
           errorMsg = "비밀번호가 일치하지 않습니다.";
         break;
       case "name":
         if (!value) errorMsg = "이름을 입력해주세요.";
         break;
-      case "birthYear":
-      case "birthMonth":
-      case "birthDay":
-        if (!formData.birthYear || !formData.birthMonth || !formData.birthDay)
-          errorMsg = "생년월일을 입력해주세요.";
-        break;
+    
       case "email":
         if (!value) errorMsg = "이메일을 입력해주세요.";
         break;
-      case "phone":
-        if (!value) errorMsg = "휴대폰 번호를 입력해주세요.";
+
+      case "nickname":
+        if (!value) errorMsg = "닉네임을 입력해주세요.";
         break;
+
       default:
         break;
     }
@@ -90,12 +87,12 @@ const SignupPage = () => {
     <div className="signup-container">
       <h2>회원가입</h2>
       <form onSubmit={handleSubmit}>
-        {/* 아이디 */}
-        <div className="form-group">
-          <label htmlFor="username">아이디</label>
-          <input type="text" id="username" value={formData.username} onChange={handleChange} onBlur={handleBlur} />
-          {errors.username && <p className="error">{errors.username}</p>}
-        </div>
+         {/* 이메일 */}
+         <div className="form-group">
+          <label htmlFor="email">이메일</label>
+          <input type="email" id="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} />
+          {errors.email && <p className="error">{errors.email}</p>}
+         </div>
 
         {/* 비밀번호 */}
         <div className="form-group">
@@ -119,35 +116,16 @@ const SignupPage = () => {
           {errors.name && <p className="error">{errors.name}</p>}
         </div>
 
-        {/* 생년월일 */}
-        <div className="form-group birth-group">
-          <label>생년월일</label>
-          <div className="birth-date">
-            <input type="text" placeholder="년(4자)" id="birthYear" value={formData.birthYear} onChange={handleChange} onBlur={handleBlur} />
-            <select id="birthMonth" value={formData.birthMonth} onChange={handleChange} onBlur={handleBlur}>
-              <option value="">월</option>
-              {[...Array(12).keys()].map((m) => (
-                <option key={m + 1} value={m + 1}>{m + 1}</option>
-              ))}
-            </select>
-            <input type="text" placeholder="일" id="birthDay" value={formData.birthDay} onChange={handleChange} onBlur={handleBlur} />
-          </div>
-          {errors.birthYear && <p className="error">{errors.birthYear}</p>}
+        
+
+       {/* 닉네임 */}
+       <div className="form-group">
+          <label htmlFor="nickname">닉네임</label>
+          <input type="text" id="nickname" value={formData.nickname} onChange={handleChange} onBlur={handleBlur} />
+          {errors.nickname && <p className="error">{errors.nickname}</p>}
         </div>
 
-        {/* 이메일 */}
-        <div className="form-group">
-          <label htmlFor="email">이메일</label>
-          <input type="email" id="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} />
-          {errors.email && <p className="error">{errors.email}</p>}
-        </div>
-
-        {/* 휴대폰 번호 */}
-        <div className="form-group">
-          <label htmlFor="phone">휴대폰</label>
-          <input type="text" id="phone" placeholder="'-' 없이 입력" value={formData.phone} onChange={handleChange} onBlur={handleBlur} />
-          {errors.phone && <p className="error">{errors.phone}</p>}
-        </div>
+        
 
         <button type="submit" className="signup-button">가입하기</button>
       </form>

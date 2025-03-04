@@ -101,7 +101,6 @@
   }
   
   .photo-card h4 {
-    padding-left: 15px;
     padding-top: 3px;
     padding-bottom: 8px;
     color: #000; /* 제목 색상: 검정 */
@@ -115,3 +114,28 @@
     line-height: 1.5; /* 줄 높이 설정 */
   }
   
+
+  /* h4(Title)와 북마크 아이콘을 가로 정렬 */
+.photo-header {
+  display: flex;
+  justify-content: space-between; /* 양쪽 끝 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  padding: 5px 15px;
+}
+
+/* 제목 스타일 */
+.photo-header h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #000; /* 검정색 */
+}
+
+
+/* 북마크 아이콘 스타일 */
+.album-main .bookmark-icon {
+  margin-top: -7px;
+  cursor: pointer;
+  display: flex;
+  transition: transform 0.2s ease-in-out;
+}
+

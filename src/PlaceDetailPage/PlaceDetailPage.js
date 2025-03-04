@@ -55,9 +55,9 @@ const PlaceDetailPage = () => {
       {/* 정보 블록 */}
       <div className="place-detail-block">
         <div className="place-detail-info">
-          <p>📍 주소: 인천광역시 송도동</p>
-          <p>☎️ 전화번호: 032-123-4567</p>
-          <p>🌐 홈페이지: <a href="https://example.com">example.com</a></p>
+          <p> 주소: 인천광역시 송도동</p>
+          <p> 전화번호: 032-123-4567</p>
+          <p> 홈페이지: <a href="https://example.com">example.com</a></p>
         </div>
       </div>
 
