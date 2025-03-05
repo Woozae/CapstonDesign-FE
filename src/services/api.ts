@@ -9,7 +9,7 @@ const api: AxiosInstance = axios.create({
   timeout: 5000, // 요청 제한 시간 (5초)
   withCredentials: true,
 });
-console.log(api);
+
 // API 요청 함수 (테스트용)
 export const fetchData = async () => {
   try {
