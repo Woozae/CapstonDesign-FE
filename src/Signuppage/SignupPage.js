@@ -3,6 +3,7 @@ import { authApi } from "../services/api.ts";
 import "./SignupPage.css";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -59,7 +60,7 @@ const SignupPage = () => {
         break;
     }
 
-    setErrors((prev) => ({ ...prev, [field]: errorMsg }));
+    return errorMsg;
   };
 
   const handleBlur = (e) => {
@@ -78,8 +79,11 @@ const SignupPage = () => {
 
     let newErrors = {};
     Object.keys(formData).forEach((key) => {
-      validateField(key, formData[key]);
+      const error = validateField(key, formData[key]); //  즉시 검증 결과를 반환받아 저장
+      if (error) newErrors[key] = error;
     });
+
+    setErrors(newErrors);
 
     if (Object.values(errors).some((error) => error !== "")) {
       setLoading(false);
@@ -95,6 +99,7 @@ const SignupPage = () => {
         formData.nickname
       );
       alert("회원가입 성공!");
+      navigate("/login"); // 로그인 페이지로 이동
     } catch (error) {
       alert("회원가입 실패: " + error.message);
     } finally {
