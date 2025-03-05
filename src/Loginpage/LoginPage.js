@@ -1,16 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { authApi } from "../services/api.ts";
 import "./LoginPage.css";
 
 const LoginPage = () => {
+  const navigate = useNavigate(); //  페이지 이동을 위한 useNavigate
+  const [formData, setFormData] = useState({ email: "", password: "" }); //  로그인 정보 상태
+  const [error, setError] = useState(""); //  에러 메시지 상태
   useEffect(() => {
     // login-page ID 추가
     document.body.id = "login-page";
 
     return () => {
       // Cleanup: 페이지를 떠날 때 ID 제거
-      document.body.id = "";
+      document.body.id = "login-page";
+      return () => {
+        document.body.id = "";
+      };
     };
   }, []);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(""); //  에러 초기화
+
+    try {
+      await authApi.signIn(formData.email, formData.password); //  로그인 요청
+      alert("로그인 성공!");
+      navigate("/"); //  로그인 성공 후 메인 페이지로 이동
+    } catch (error) {
+      console.error("로그인 오류:", error);
+      setError("로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요."); //  에러 메시지 설정
+    }
+  };
 
   return (
     <>
@@ -19,23 +44,43 @@ const LoginPage = () => {
           <h1>Spot-Right</h1>
         </header>
         <div className="login-box">
-          <form>
+          <form onSubmit={handleSubmit}>
+            {" "}
+            {/*  로그인 기능 추가 */}
             <div className="form-group">
-              <label htmlFor="username">아이디</label>
-              <input type="text" id="username" placeholder="이메일을 입력하세요" />
+              <label htmlFor="email">이메일</label>{" "}
+              {/*  id 변경 (username → email) */}
+              <input
+                type="text"
+                id="email"
+                placeholder="이메일을 입력하세요"
+                value={formData.email}
+                onChange={handleChange} //  입력값 상태 업데이트
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">비밀번호</label>
-              <input type="password" id="password" placeholder="비밀번호를 입력하세요" />
+              <input
+                type="password"
+                id="password"
+                placeholder="비밀번호를 입력하세요"
+                value={formData.password}
+                onChange={handleChange} //  입력값 상태 업데이트
+              />
             </div>
-            
-            <button type="submit" className="login-button">로그인</button>
-            <button type="button" className="sign-up-button" 
-            onClick={() => window.location.href = "/Signup"}>
+            {error && <p className="error">{error}</p>}{" "}
+            {/*  에러 메시지 표시 */}
+            <button type="submit" className="login-button">
+              로그인
+            </button>{" "}
+            {/*  로그인 버튼 동작 추가 */}
+            <button
+              type="button"
+              className="sign-up-button"
+              onClick={() => navigate("/Signup")} //  페이지 이동 수정
+            >
               회원가입
             </button>
-
-            
           </form>
         </div>
       </div>
