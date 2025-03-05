@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { authApi } from "../services/api.ts";
 import "./SignupPage.css";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
   const navigate = useNavigate();
