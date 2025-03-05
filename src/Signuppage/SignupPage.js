@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { authApi } from "../../services/api";
 import "./SignupPage.css";
 
 const SignupPage = () => {
@@ -15,6 +16,7 @@ const SignupPage = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); // 로딩 상태
 
   useEffect(() => {
     document.body.id = "signup-page";
@@ -44,7 +46,7 @@ const SignupPage = () => {
       case "name":
         if (!value) errorMsg = "이름을 입력해주세요.";
         break;
-    
+
       case "email":
         if (!value) errorMsg = "이메일을 입력해주세요.";
         break;
@@ -70,16 +72,33 @@ const SignupPage = () => {
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // 로딩 상태 시작
 
     let newErrors = {};
     Object.keys(formData).forEach((key) => {
       validateField(key, formData[key]);
     });
 
-    if (Object.values(errors).every((error) => error === "")) {
+    if (Object.values(errors).some((error) => error !== "")) {
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await authApi.signUp(
+        formData.name,
+        formData.email,
+        formData.password,
+        formData.confirmPassword,
+        formData.nickname
+      );
       alert("회원가입 성공!");
+    } catch (error) {
+      alert("회원가입 실패: " + error.message);
+    } finally {
+      setLoading(false); //  로딩 상태 종료
     }
   };
 
@@ -87,47 +106,79 @@ const SignupPage = () => {
     <div className="signup-container">
       <h2>회원가입</h2>
       <form onSubmit={handleSubmit}>
-         {/* 이메일 */}
-         <div className="form-group">
+        {/* 이메일 */}
+        <div className="form-group">
           <label htmlFor="email">이메일</label>
-          <input type="email" id="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} />
+          <input
+            type="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
           {errors.email && <p className="error">{errors.email}</p>}
-         </div>
+        </div>
 
         {/* 비밀번호 */}
         <div className="form-group">
           <label htmlFor="password">비밀번호</label>
-          <input type="password" id="password" value={formData.password} onChange={handleChange} onBlur={handleBlur} />
-          <p className="info">문자, 숫자, 기호를 조합하여 10~15자로 입력해주세요.</p>
+          <input
+            type="password"
+            id="password"
+            value={formData.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <p className="info">
+            문자, 숫자, 기호를 조합하여 10~15자로 입력해주세요.
+          </p>
           {errors.password && <p className="error">{errors.password}</p>}
         </div>
 
         {/* 비밀번호 확인 */}
         <div className="form-group">
           <label htmlFor="confirmPassword">비밀번호 재확인</label>
-          <input type="password" id="confirmPassword" value={formData.confirmPassword} onChange={handleChange} onBlur={handleBlur} />
-          {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+          <input
+            type="password"
+            id="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          {errors.confirmPassword && (
+            <p className="error">{errors.confirmPassword}</p>
+          )}
         </div>
 
         {/* 이름 */}
         <div className="form-group">
           <label htmlFor="name">이름</label>
-          <input type="text" id="name" value={formData.name} onChange={handleChange} onBlur={handleBlur} />
+          <input
+            type="text"
+            id="name"
+            value={formData.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
           {errors.name && <p className="error">{errors.name}</p>}
         </div>
 
-        
-
-       {/* 닉네임 */}
-       <div className="form-group">
+        {/* 닉네임 */}
+        <div className="form-group">
           <label htmlFor="nickname">닉네임</label>
-          <input type="text" id="nickname" value={formData.nickname} onChange={handleChange} onBlur={handleBlur} />
+          <input
+            type="text"
+            id="nickname"
+            value={formData.nickname}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
           {errors.nickname && <p className="error">{errors.nickname}</p>}
         </div>
 
-        
-
-        <button type="submit" className="signup-button">가입하기</button>
+        <button type="submit" className="signup-button">
+          가입하기
+        </button>
       </form>
     </div>
   );
