@@ -74,10 +74,17 @@ export const authApi = {
     name: string,
     email: string,
     password: string,
-    passwordConfirm: string
+    passwordConfirm: string,
+    nickname: string
   ) =>
     api
-      .post("/auth/sign-up", { name, email, password, passwordConfirm })
+      .post("/auth/sign-up", {
+        name,
+        email,
+        password,
+        passwordConfirm,
+        nickname,
+      })
       .catch(handleApiError),
 };
 
