@@ -78,7 +78,7 @@ export const authApi = {
     nickname: string
   ) =>
     api
-      .post("/auth/sign-up", {
+      .post("/api/auth/sign-up", {
         name,
         email,
         password,
