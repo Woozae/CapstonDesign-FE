@@ -69,7 +69,7 @@ const handleApiError = (error: any) => {
 // Auth API
 export const authApi = {
   signIn: (email: string, password: string) =>
-    api.post("/auth/sign-in", { email, password }).catch(handleApiError),
+    api.post("/api/auth/sign-in", { email, password }).catch(handleApiError),
   signUp: (
     name: string,
     email: string,
