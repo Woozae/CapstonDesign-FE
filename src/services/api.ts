@@ -5,11 +5,11 @@ const API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
 // Axios 인스턴스 생성
 const api = axios.create({
-  baseURL: API_URL, // 배포된 백엔드 URL 사용
+  baseURL: `api.${API_URL}`, // 배포된 백엔드 URL 사용
   timeout: 5000, // 요청 제한 시간 (5초)
   withCredentials: true,
 });
-
+console.log(api);
 // API 요청 함수 (테스트용)
 export const fetchData = async () => {
   try {
