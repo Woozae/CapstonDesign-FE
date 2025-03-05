@@ -176,8 +176,8 @@ const SignupPage = () => {
           {errors.nickname && <p className="error">{errors.nickname}</p>}
         </div>
 
-        <button type="submit" className="signup-button">
-          가입하기
+        <button type="submit" className="signup-button" disabled={loading}>
+          {loading ? "가입 중..." : "가입하기"}
         </button>
       </form>
     </div>
