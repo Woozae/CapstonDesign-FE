@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { authApi } from "../../services/api.ts";
+import { authApi } from "../services/api.ts";
 import "./SignupPage.css";
 
 const SignupPage = () => {
