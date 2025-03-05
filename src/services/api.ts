@@ -88,17 +88,15 @@ export const authApi = {
       .catch(handleApiError),
 };
 
-// City API
-export const cityApi = {
-  signIn: (email: string, password: string) =>
-    api.post("/auth/sign-in", { email, password }).catch(handleApiError),
-  signUp: (
-    name: string,
-    email: string,
-    password: string,
-    passwordConfirm: string
-  ) =>
-    api
-      .post("/auth/sign-up", { name, email, password, passwordConfirm })
-      .catch(handleApiError),
+// Spot API
+export const spotApi = {
+  getBookmark: () => api.get("/spots/bookmark").catch(handleApiError),
+  setBookmark: (spotId: string) =>
+    api.post(`/spots/${spotId}/bookmark`).catch(handleApiError),
+  deleteBookmark: (spotId: string) =>
+    api.delete(`/spots/${spotId}/bookmark`).catch(handleApiError),
+  setLike: (spotId: string) =>
+    api.post(`/spots/${spotId}/like`).catch(handleApiError),
+  deleteLike: (spotId: string) =>
+    api.delete(`/spots/${spotId}/like`).catch(handleApiError),
 };
