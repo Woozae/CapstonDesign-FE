@@ -7,18 +7,16 @@ const LoginPage = () => {
   const navigate = useNavigate(); //  페이지 이동을 위한 useNavigate
   const [formData, setFormData] = useState({ email: "", password: "" }); //  로그인 정보 상태
   const [error, setError] = useState(""); //  에러 메시지 상태
-  useEffect(() => {
-    // login-page ID 추가
-    document.body.id = "login-page";
 
+  useEffect(() => {
+    document.body.id = "login-page";
+  
     return () => {
-      // Cleanup: 페이지를 떠날 때 ID 제거
-      document.body.id = "login-page";
-      return () => {
-        document.body.id = "";
-      };
+      document.body.id = "";
     };
   }, []);
+  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -58,17 +56,24 @@ const LoginPage = () => {
                 onChange={handleChange} //  입력값 상태 업데이트
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="password">비밀번호</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="비밀번호를 입력하세요"
-                value={formData.password}
-                onChange={handleChange} //  입력값 상태 업데이트
-              />
+            <div className="password-group">
+              <div className="form-group">
+                <label htmlFor="password">비밀번호</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="비밀번호를 입력하세요"
+                  value={formData.password}
+                  onChange={handleChange} //  입력값 상태 업데이트
+                />
+              </div>
             </div>
-            {error && <p className="error">{error}</p>}{" "}
+           
+            <p className="error">
+              {error || " "}
+            </p>
+
+
             {/*  에러 메시지 표시 */}
             <button type="submit" className="login-button">
               로그인
@@ -84,8 +89,10 @@ const LoginPage = () => {
           </form>
         </div>
       </div>
+      
       <div className="login-bottom">
-        <a href="#" className="bottom-icon">
+         {/* 
+       <a href="#" className="bottom-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -101,8 +108,10 @@ const LoginPage = () => {
               strokeLinejoin="round"
             />
           </svg>
-        </a>
+        </a> 
+        */}
       </div>
+      
     </>
   );
 };

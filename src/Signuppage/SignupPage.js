@@ -10,11 +10,8 @@ const SignupPage = () => {
     password: "",
     confirmPassword: "",
     name: "",
-    birthYear: "",
-    birthMonth: "",
-    birthDay: "",
     email: "",
-    phone: "",
+    nickname: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -66,8 +63,14 @@ const SignupPage = () => {
 
   const handleBlur = (e) => {
     const { id, value } = e.target;
-    validateField(id, value);
+    const errorMessage = validateField(id, value);
+  
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [id]: errorMessage,
+    }));
   };
+  
 
   const handleChange = (e) => {
     const { id, value } = e.target;
