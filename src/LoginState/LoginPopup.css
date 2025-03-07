@@ -8,14 +8,14 @@
     align-items: center;
     gap: 3px;
     z-index: 10000;
-    width: 240px;
-    gap: 3px;
+    width: 280px;
+    gap: 5px;
     pointer-events: auto; /* 팝업 내부 클릭 가능 */
   }
 
   
   .login-popup p {
-    font-size: 14px;
+    font-size: 18px;
     color: #333;
     margin-right: 8px;
   }

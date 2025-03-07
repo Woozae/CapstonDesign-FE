@@ -16,13 +16,24 @@
    
 
   }
+
+  #signup-page .form-group input[type="text"],
+  #signup-page .form-group input[type="password"],
+  #signup-page .form-group input[type="email"] {
+      width: 95%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    
+    }
   
   #signup-page h2 {
     text-align: center;
     margin-bottom: 20px;
   }
   
-  .form-group {
+  #signup-page .form-group {
     position: relative;
     margin-bottom: 25px;
   }
@@ -35,16 +46,14 @@
   }
   
   #Signuppage input {
-    width: 100%;
     padding: 10px;
     height: 20px; /* 모든 입력 필드 크기 통일 */
     border: 1px solid #ccc;
     border-radius: 4px;
   }
 
-  #email{
-    width: 100%;
-    height: 36px;
+  .signup-container #email{
+    width: 95%;
     border-radius: 4px;
     border: 1px solid #ccc;
   }
@@ -81,7 +90,7 @@
     background-color: #555;
   }
   
-  .error {
+  .signup-page .error {
     color: red;
     font-size: 12px;
     position: absolute;
