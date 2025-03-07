@@ -28,7 +28,8 @@ const LoginPage = () => {
     setError(""); //  에러 초기화
 
     try {
-      await authApi.signIn(formData.email, formData.password); //  로그인 요청
+      const response = await authApi.signIn(formData.email, formData.password); //  로그인 요청
+      localStorage.setItem("accessToken", response.data.data.accessToken);
       alert("로그인 성공!");
       navigate("/"); //  로그인 성공 후 메인 페이지로 이동
     } catch (error) {
