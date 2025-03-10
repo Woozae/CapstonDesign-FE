@@ -1,14 +1,32 @@
 // src/LoginState/AuthContext.js
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 상태 저장
 
-  // 로그인 & 로그아웃 함수
-  const login = () => setIsLoggedIn(true);
-  const logout = () => setIsLoggedIn(false);
+   // 로그인 시 accessToken 저장 & 상태 업데이트
+
+   const login = (token) => {
+    localStorage.setItem("accessToken", token);
+    setIsLoggedIn(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    setIsLoggedIn(false);
+  };
+
+   // 새로고침 시에도 localStorage에서 accessToken을 확인하여 로그인 상태 유지
+   useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, login, logout }}>

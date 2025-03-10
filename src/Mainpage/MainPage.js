@@ -70,22 +70,24 @@ const Mainpage = () => {
   };
 
   // 로그인 필요 팝업 표시
-  const showLoginRequiredPopup = () => {
-    // 스크롤 업 버튼 위치 기준으로 팝업 배치
-    const scrollButton = document.querySelector(".scroll-to-top");
+const showLoginRequiredPopup = () => {
+  // 스크롤 업 버튼(예: 화면 오른쪽 하단 버튼)의 위치를 기준으로 팝업을 배치
+  const scrollButton = document.querySelector(".scroll-to-top");
+
+  if (!scrollButton) return; // 스크롤 버튼이 없으면 실행하지 않음
+
+  // 버튼의 위치 정보 가져오기 (뷰포트 기준 좌표)
+  const buttonRect = scrollButton.getBoundingClientRect();
   
-    if (!scrollButton) return; // 버튼이 없으면 리턴
-  
-    const buttonRect = scrollButton.getBoundingClientRect();
-    
-    // 기본 위치 (스크롤 버튼 왼쪽)
-    let left = buttonRect.left - 300; // 버튼 왼쪽에서 360px 이동
-    let top = buttonRect.top - 10; // 현재 스크롤 위치 반영
-  
-    setPopupPosition({ top: `${top}px`, left: `${left}px` });
-    setShowLoginPopup(true);
-  };
-  
+  // 팝업의 기본 위치 설정 (스크롤 버튼 왼쪽으로 배치)
+  let left = buttonRect.left - 360; // 버튼의 왼쪽에서 360px 이동하여 배치
+  let top = buttonRect.top - 10; // 버튼의 상단에서 약간 위로 조정
+
+  // 계산된 위치를 상태에 저장하여 팝업의 위치 설정
+  setPopupPosition({ top: `${top}px`, left: `${left}px` });
+  setShowLoginPopup(true); // 팝업 표시
+};
+
 
 
   const handleBookmarkClick = (event, index) => {

@@ -28,6 +28,7 @@ const ScrollToTopButton = () => {
 /** 헤더 컴포넌트 */
 const Header = () => {
   const navigate = useNavigate(); // useNavigate 훅 사용
+  
 
   return (
     <header className="header">
