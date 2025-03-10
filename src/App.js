@@ -80,7 +80,7 @@ const Header = () => {
                 <div className="user-popup">
                   <p className="user-nickname">{nickname}님</p>
                   <button className="logout-button" onClick={logout}>
-                    로그아웃
+                    Logout
                   </button>
                 </div>
                   )}
