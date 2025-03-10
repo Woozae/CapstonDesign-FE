@@ -105,35 +105,44 @@
     
   }
 
-  /* 팝업 스타일 */
-.user-popup {
-    position: absolute;
-    top: 50px;
-    right: 10px;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    text-align: center;
-    width: 150px;
+  .user-menu {
+    position: relative; /* 부모 요소가 기준 */
+    display: inline-block;
   }
   
-  .user-nickname {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 8px;
+  .user-popup {
+    position: absolute;
+    top: 55px; /* 아이콘 아래 위치 */
+    right: 0;
+    width: 140px;
+    background-color: white;
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-popup p {
+    margin: 0;
+    font-size: 12px;
+    color: #2e2e2e;
+    margin-right: 10px;
   }
   
   .logout-button {
+    width: 80px;
+    padding: 6px;
+    background-color: #2e2e2e;
+    color: white;
     border: none;
-    padding: 5px 10px;
-    background-color: #f0f0f0;
+    border-radius: 8px;
     cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
   }
   
   .logout-button:hover {
-    background-color: #e0e0e0;
+    background-color: #292929;
   }
+  
