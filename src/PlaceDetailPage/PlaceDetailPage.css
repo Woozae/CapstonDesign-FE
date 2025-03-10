@@ -11,7 +11,6 @@
     text-align: center; /* 모든 내용 가로 중앙 정렬 */
     
     
-    
 }
 
 /* 각 섹션을 블록 형태로 분리 */
@@ -20,6 +19,7 @@
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px; /* 블록 간격 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
 }
 

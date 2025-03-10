@@ -74,7 +74,7 @@ const PlaceDetailPage = () => {
       {/* 특이사항 리스트 */}
       <div className="place-detail-block">
         <div className="place-detail-features">
-          <h3>📝 특징</h3>
+          <h3>특징</h3>
           <ul>
             <li>넓은 공원과 휴식 공간</li>
             <li>다양한 맛집과 카페</li>
