@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authApi } from "../services/api.ts";
+import { useAuth } from "../LoginState/AuthContext"
 import "./LoginPage.css";
 
 const LoginPage = () => {
   const navigate = useNavigate(); //  페이지 이동을 위한 useNavigate
   const [formData, setFormData] = useState({ email: "", password: "" }); //  로그인 정보 상태
   const [error, setError] = useState(""); //  에러 메시지 상태
-
+  const { login } = useAuth();
+  
   useEffect(() => {
     document.body.id = "login-page";
   

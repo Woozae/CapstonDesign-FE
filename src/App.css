@@ -75,6 +75,7 @@
     width: 45px;
     height: 30px;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 /* 스크롤 버튼 */
