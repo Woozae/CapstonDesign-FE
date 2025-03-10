@@ -71,6 +71,9 @@ const Mainpage = () => {
 
   // 로그인 필요 팝업 표시
 const showLoginRequiredPopup = () => {
+
+  if (isLoggedIn) return; // 이미 로그인 상태이면 팝업을 띄우지 않음
+  
   // 스크롤 업 버튼(예: 화면 오른쪽 하단 버튼)의 위치를 기준으로 팝업을 배치
   const scrollButton = document.querySelector(".scroll-to-top");
 

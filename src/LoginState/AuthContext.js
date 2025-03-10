@@ -13,10 +13,12 @@ export const AuthProvider = ({ children }) => {
 
   const login = () => setIsLoggedIn(true);
 
+
   const logout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("accessToken"); // 로그아웃 시 토큰 삭제
   };
+
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
