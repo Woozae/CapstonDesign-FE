@@ -112,8 +112,8 @@
   
   .user-popup {
     position: absolute;
-    top: 55px; /* 아이콘 아래 위치 */
-    right: 0;
+    top: 50px; /* 아이콘 아래 위치 */
+    right: -16px;
     width: 140px;
     background-color: white;
     border: 1px solid #d3d3d3;

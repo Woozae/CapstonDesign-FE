@@ -9,7 +9,7 @@ const LoginPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" }); //  로그인 정보 상태
   const [error, setError] = useState(""); //  에러 메시지 상태
   const { login } = useAuth();
-  
+
   useEffect(() => {
     document.body.id = "login-page";
   
@@ -35,6 +35,11 @@ const LoginPage = () => {
       login(); // 로그인 상태 업데이트 (isLoggedIn = true)
       alert("로그인 성공!");
       navigate("/"); //  로그인 성공 후 메인 페이지로 이동
+
+       // 약간의 딜레이 후 새로고침 (100ms)
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
     } catch (error) {
       console.error("로그인 오류:", error);
       setError("로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요."); //  에러 메시지 설정
