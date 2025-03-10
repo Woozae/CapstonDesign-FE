@@ -29,6 +29,7 @@ const LoginPage = () => {
       const response = await authApi.signIn(formData.email, formData.password); //  로그인 요청
       console.log(response);
       localStorage.setItem("accessToken", response.data.data);
+      login(); // `isLoggedIn` 상태 업데이트
       alert("로그인 성공!");
       navigate("/"); //  로그인 성공 후 메인 페이지로 이동
     } catch (error) {
