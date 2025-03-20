@@ -1,0 +1,141 @@
+/* 공통 스타일 */
+
+/* 모든 요소의 기본 여백 제거 */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  .album-main {
+    padding: 0 40px 40px; /* 상단 여백 제거, 좌우와 하단 여백 추가 */
+    background-color: #2e2e2e; /* 메인 배경색을 어둡게 설정 */
+    margin-top: 0; /* 헤더와의 여백 제거 */
+  }
+  
+  .album-section {
+    background-color: #fff; /* album-section 내부는 흰색 배경 */
+    border-radius: 8px; /* 부드러운 모서리 */
+    padding: 18px; /* 내부 여백 추가 */
+  }
+  
+  .album-title {
+    font-weight: lighter;
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    color: #fff; /* 텍스트를 흰색으로 설정 */
+    background-color: #2e2e2e; /* 배경색을 어둡게 설정 */
+    padding: 10px 15px; /* 텍스트 주변 여백 추가 */
+    border-radius: 8px; /* 부드러운 모서리 */
+    text-align: left; /* 텍스트를 왼쪽 정렬 */
+  }
+  
+  .profile-section {
+    display: flex;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff; /* 프로필 섹션 배경은 흰색 */
+  }
+  
+  .profile-image-wrapper {
+    position: relative;
+  }
+  
+  .profile-image {
+    margin-top: 30px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+  }
+  
+  .profile-info {
+    padding-left: 35px;
+    padding-top: 55px;
+  }
+  
+  .profile-info h3 {
+    margin: 0;
+    font-size: 28px;
+    color: #000; /* 텍스트 색상: 검정 */
+  }
+  
+  .profile-info p {
+    margin: 5px 0 0;
+    color: #555; /* 텍스트 색상: 회색 */
+    font-size: 20px;
+  }
+  
+  .album-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  .photo-card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: start;
+    transition: box-shadow 0.3s ease; /* hover 효과 추가 */
+  }
+  
+  .photo-card:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* hover 시 그림자 효과 */
+  }
+  
+  .photo-thumbnail {
+    width: 100%;
+    padding-bottom: 75%; /* 4:3 비율 */
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .photo-card h4 {
+    padding-top: 3px;
+    padding-bottom: 8px;
+    color: #000; /* 제목 색상: 검정 */
+  }
+  
+  .photo-card p {
+    padding-left: 15px;
+    color: #3b3b3b; /* 텍스트 색상: 회색 */
+    overflow: hidden; /* 넘치는 내용을 숨김 */
+    text-overflow: ellipsis; /* 넘치는 부분을 "..."로 표시 */
+    line-height: 1.5; /* 줄 높이 설정 */
+  }
+  
+
+  /* h4(Title)와 북마크 아이콘을 가로 정렬 */
+.photo-header {
+  display: flex;
+  justify-content: space-between; /* 양쪽 끝 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  padding: 5px 15px;
+}
+
+/* 제목 스타일 */
+.photo-header h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #000; /* 검정색 */
+}
+
+
+/* 북마크 아이콘 스타일 */
+.album-main .bookmark-icon {
+  margin-top: -7px;
+  cursor: pointer;
+  display: flex;
+  transition: transform 0.2s ease-in-out;
+}
+

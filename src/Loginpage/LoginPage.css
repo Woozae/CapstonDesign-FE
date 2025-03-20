@@ -1,0 +1,155 @@
+/* LoginPage.css */
+
+#login-page {
+  background-color: #fff;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+  
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    
+  }
+  
+  .login-header {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: lighter;
+    color: #333;
+  }
+  
+  .login-box {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.90);
+    height:260px;
+  }
+  
+  
+  .form-group  {
+    margin-bottom: 15px;
+  }
+
+  .password-group .form-group {
+    margin-bottom: 8px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  #login-page .form-group input[type="text"],
+  #login-page .form-group input[type="password"] {
+      width: 95%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  
+  .form-options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #2e2e2e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-top:7px;
+  }
+  
+  .login-button:hover {
+    text-decoration: underline;
+  }
+
+  .sign-up-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #2e2e2e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sign-up-button:hover {
+    text-decoration: underline;
+  }
+  
+  
+  .signup-link a {
+    color: var(--sds-color-text-brand-default);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: var(--sds-typography-body-font-weight-regular);
+    line-height: 100%; /* 16px */
+    text-decoration: none; /* 기본 밑줄 제거 */
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline; /* hover 시 밑줄 추가 */
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline; /* hover 시 밑줄 추가 */
+  }
+  
+  .login-bottom {
+    position: fixed; /* 페이지 하단에 고정 */
+    bottom: 0; /* 화면 하단에 붙음 */
+    left: 0;
+    width: 100%; /* 전체 화면 너비 */
+    background-color: #2E2E2E; /* 배경색 */
+    display: flex; /* Flexbox 사용 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 3px; /* 여백 추가 */
+    padding-bottom: 3px;
+    height:35px;
+  }
+  
+  .login-bottom .bottom-icon {
+    display: flex; /* 아이콘이 중앙에 정렬되도록 설정 */
+    justify-content: center;
+    align-items: center;
+    width: 35px; /* 아이콘 컨테이너 너비를 SVG 크기에 맞춤 */
+    height: 35px; /* 아이콘 컨테이너 높이를 SVG 크기에 맞춤 */
+    flex-shrink: 0; /* 크기 고정 */
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-right: 30px; /* 오른쪽 여백 */
+    overflow: visible; /* 컨테이너 밖으로 나가는 SVG도 표시 */
+  }
+
+  #login-page .error {
+
+    font-size: 12px; 
+    color: red; 
+    height: 16px; /* 고정된 높이 확보 */
+    margin-left: 5px;
+    margin-bottom: 7px;
+  }
+  
+  
+  

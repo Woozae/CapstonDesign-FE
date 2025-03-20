@@ -1,0 +1,69 @@
+.login-popup {
+    position: absolute;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display:flex;
+    align-items: center;
+    z-index: 10000;
+    width: 280px;
+    gap: 5px;
+    pointer-events: auto; /* 팝업 내부 클릭 가능 */
+  }
+
+  
+  .login-popup p {
+    font-size: 16px;
+    color: #333;
+    margin-right: 26px;
+  }
+  
+  .login-popup button {
+    background-color: #2e2e2e;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  
+  .login-popup .close-btn {
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #999;
+  }
+
+  
+    /* 팝업을 항상 최상단(오버레이)으로 배치 */
+  .login-popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999; /* 최상단 배치 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none; /* 팝업 바깥 클릭 무시 */
+    }
+  
+  
+  /* 팝업 배경 오버레이 */
+    .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3); /* 불투명한 배경 */
+        z-index: 9999; /* 팝업보다 아래 배치 */
+    }
+    
+  
+
+  

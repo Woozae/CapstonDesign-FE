@@ -1,0 +1,132 @@
+
+/* 상세 정보 메인 컨테이너 */
+.place-detail-container {
+    width: 100%;
+    background-color: #2e2e2e;
+    border: 2px solid #2e2e2e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    text-align: center; /* 모든 내용 가로 중앙 정렬 */
+    
+    
+}
+
+/* 각 섹션을 블록 형태로 분리 */
+.place-detail-block {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px; /* 블록 간격 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+/* 상세 페이지 상단 이미지 (대표 이미지 슬라이더) */
+.place-detail-image-container {
+    position: relative;
+    width: 100%;
+    height: 438px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e2e2e;
+    margin-bottom: 20px;
+}
+
+.place-detail-image-container img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* 화살표 버튼 스타일 */
+.place-arrow {
+    all: unset; /* 기본 버튼 스타일 제거 */
+    cursor: pointer;
+    font-size: 24px; /* 화살표 크기 */
+    color: white; /* 화살표 색상 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px; /* 클릭 가능 영역 확보 */
+  }
+  
+  
+  /* 왼쪽 화살표 위치 */
+  .place-arrow.left {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* 오른쪽 화살표 위치 */
+  .place-arrow.right {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* 화살표 아이콘 크기 조정 */
+  .place-arrow svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Hover 시 화살표 아이콘 투명도 조정 (배경 유지) */
+    .place-arrow:hover svg {
+        opacity: 0.5; /* 화살표만 흐려지게 */
+    }
+  
+
+/* 상세 정보 타이틀 */
+.place-detail-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2e2e2e;
+    text-align: center;
+}
+
+/* 주소, 연락처, 웹사이트 정보 */
+.place-detail-info p {
+    font-size: 16px;
+    color: #4b4b4b;
+}
+
+.place-detail-info a {
+    color: #007aff;
+    text-decoration: none;
+}
+
+.place-detail-info a:hover {
+    text-decoration: underline;
+}
+
+/* 상세 설명 */
+.place-detail-description {
+    padding: 10px;
+    font-size: 16px;
+    color: #4b4b4b;
+    border-radius: 3px;
+    text-align: center;
+}
+
+/* 특이사항 리스트 */
+.place-detail-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.place-detail-features li {
+    font-size: 16px;
+    color: #4b4b4b;
+    margin-top: 5px;
+}
+
